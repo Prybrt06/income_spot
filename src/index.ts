@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import { app, connect } from "./server";
-import { createUser } from "../controllers/createUser";
+import { userRoute } from "../routes/userRoute";
 dotenv.config();
 
 app.listen(4000, () => {
@@ -8,4 +8,4 @@ app.listen(4000, () => {
 	console.log("Server starts at http://localhost:4000");
 });
 
-app.post("/user", createUser);
+app.use("/user", userRoute);

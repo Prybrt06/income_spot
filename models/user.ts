@@ -16,12 +16,15 @@ const user = new mongoose.Schema({
 	userName: {
 		type: String,
 		required: true,
+		unique: true,
 	},
 	phoneNo: {
 		type: String,
+		unique: true,
 	},
 	email: {
 		type: String,
+		unique: true,
 	},
 	currentCompany: {
 		type: String,

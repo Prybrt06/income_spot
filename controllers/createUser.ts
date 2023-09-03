@@ -5,6 +5,10 @@ export const createUser = async (req, res, next) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		name: req.body.firstName + " " + req.body.lastName,
+		userName: req.body.userName,
+		currentCompany: req.body.currentCompany,
+		email: req.body.email,
+		phoneNo: req.body.phoneNo,
 	});
 
 	console.log(newUser);
