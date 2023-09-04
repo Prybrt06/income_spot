@@ -4,6 +4,7 @@ export const updateUser = async (req, res, next) => {
 	const id = req.params.id;
 
 	const doc = await User.findOne({ _id: id });
+
 	const user = await doc.updateOne({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,

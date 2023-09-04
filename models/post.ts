@@ -23,3 +23,7 @@ const post = new mongoose.Schema({
 		default: "year",
 	},
 });
+
+const Post = mongoose.model("Post", post);
+
+export default Post;

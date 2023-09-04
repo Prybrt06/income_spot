@@ -29,6 +29,11 @@ const user = new mongoose.Schema({
 	currentCompany: {
 		type: String,
 	},
+	posts: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: "Post",
+		default: [],
+	},
 });
 
 const User = mongoose.model("User", user);
