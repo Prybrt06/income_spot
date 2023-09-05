@@ -1,7 +1,11 @@
-import User from "../models/user";
+import User from "../../models/user";
 
-export const createUser = async (req, res, next) => {
-	const newUser = await User.create({
+export const updateUser = async (req, res, next) => {
+	const id = req.params.id;
+
+	const doc = await User.findOne({ _id: id });
+
+	const user = await doc.updateOne({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		name: req.body.firstName + " " + req.body.lastName,
@@ -11,8 +15,6 @@ export const createUser = async (req, res, next) => {
 		phoneNo: req.body.phoneNo,
 	});
 
-	console.log(newUser);
-
 	res.status(201);
-	res.json({ user: newUser });
+	res.json({ updatedUser: user });
 };

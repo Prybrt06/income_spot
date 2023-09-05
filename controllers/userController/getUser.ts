@@ -1,4 +1,4 @@
-import User from "../models/user";
+import User from "../../models/user";
 
 export const getOneUser = async (req, res, next) => {
 	const id = req.params.id;
@@ -8,7 +8,7 @@ export const getOneUser = async (req, res, next) => {
 	res.json({ user: user });
 };
 
-export const getAllUser = async (req, res, next) => {
+export const getAllUser = async (_, res) => {
 	const users = await User.find();
 
 	res.status(201);
