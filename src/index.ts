@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import { app, connect } from "./server";
 import { userRoute } from "../routes/userRoute";
+import postRoute from "../routes/postRoute";
 dotenv.config();
 
 app.listen(4000, () => {
@@ -9,3 +10,5 @@ app.listen(4000, () => {
 });
 
 app.use("/user", userRoute);
+
+app.use("/post", postRoute);
