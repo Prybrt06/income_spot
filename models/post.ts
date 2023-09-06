@@ -30,6 +30,11 @@ const post = new mongoose.Schema(
 				return await this.find({ author: id });
 			},
 		},
+		query: {
+			async searchUsingId(id) {
+				return await this.findOne({ _id: id });
+			},
+		},
 	}
 );
 
