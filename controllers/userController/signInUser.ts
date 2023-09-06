@@ -1,16 +1,12 @@
-import mongoose from "mongoose";
 import User from "../../models/user";
-import { comparePassword, createJWT } from "../authController/auth";
+import {  createJWT } from "../authController/auth";
 
 export const signin = async (req, res, next) => {
 	const user = await User.findOne({
 		userName: req.body.userName,
 	});
 
-	var isPasswordValid = await comparePassword(
-		req.body.password,
-		user.password
-	);
+	var isPasswordValid = user.comparePassword(req.body.password);
 
 	if (!isPasswordValid) {
 		res.status(401);
