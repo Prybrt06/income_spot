@@ -6,23 +6,36 @@ const post = new mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		},
-		title: {
+		text: {
 			type: String,
 			required: true,
 		},
-		companyName: {
-			type: String,
-			required: true,
-		},
-		experience: {
+		upvote: {
 			type: Number,
-			required: true,
+			default: 0,
 		},
-		experiencePeriod: {
-			type: String,
-			enum: ["year", "month"],
-			default: "year",
+		downvote: {
+			type: Number,
+			default: 0,
 		},
+		comments: {
+			type: [mongoose.Schema.Types.ObjectId],
+			ref: "Comment",
+			default: [],
+		},
+		// companyName: {
+		// 	type: String,
+		// 	required: true,
+		// },
+		// experience: {
+		// 	type: Number,
+		// 	required: true,
+		// },
+		// experiencePeriod: {
+		// 	type: String,
+		// 	enum: ["year", "month"],
+		// 	default: "year",
+		// },
 	},
 	{
 		statics: {
