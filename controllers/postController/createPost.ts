@@ -6,7 +6,7 @@ const createPost = async (req, res, next) => {
 
 	const post = await Post.create({
 		author: doc._id,
-		title: req.body.title,
+		text: req.body.text,
 	});
 
 	doc.posts.push(post._id);
