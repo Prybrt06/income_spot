@@ -3,17 +3,19 @@ import bcrypt from "bcryptjs";
 
 const user = new mongoose.Schema(
 	{
-		firstName: {
-			type: String,
-			required: true,
-		},
-		lastName: {
-			type: String,
-			required: true,
-		},
 		name: {
+			firstName: {
+				type: String,
+				required: true,
+			},
+			lastName: {
+				type: String,
+				required: true,
+			},
+		},
+		fullName: {
 			type: String,
-			required: true,
+			default: " ",
 		},
 		userName: {
 			type: String,
@@ -23,6 +25,7 @@ const user = new mongoose.Schema(
 		password: {
 			type: String,
 			required: true,
+			default: " ",
 		},
 		phoneNo: {
 			type: String,
@@ -40,6 +43,16 @@ const user = new mongoose.Schema(
 			ref: "Post",
 			default: [],
 		},
+		followers: {
+			type: [mongoose.Schema.Types.ObjectId],
+			ref: "User",
+			default: [],
+		},
+		following: {
+			type: [mongoose.Schema.Types.ObjectId],
+			ref: "User",
+			default: [],
+		},
 	},
 	{
 		methods: {
@@ -51,7 +64,14 @@ const user = new mongoose.Schema(
 				const hashPassword = this.password;
 				return bcrypt.compare(actualPassword, this.password);
 			},
+
+			fetchFullName() {
+				this.fullName = this.name.firstName + " " + this.name.lastName;
+			},
 		},
+		virtuals: {
+			
+		}
 	}
 );
 
